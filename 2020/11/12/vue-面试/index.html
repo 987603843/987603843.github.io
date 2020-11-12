@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <meta name="author" content="LzMiracle">
+
+
+
+
+
+<title>vue-面试 | LzMiracle</title>
+
+
+
+    <link rel="icon" href="/favicon.ico">
+
+
+
+
+    <!-- stylesheets list from _config.yml -->
+    
+    <link rel="stylesheet" href="/css/style.css">
+    
+
+
+
+    <!-- scripts list from _config.yml -->
+    
+    <script src="/js/script.js"></script>
+    
+    <script src="/js/tocbot.min.js"></script>
+    
+
+
+
+    
+    
+        
+    
+
+
+<canvas class="fireworks" style="position: fixed;left: 0;top: 0;z-index: 1; pointer-events: none;" ></canvas> 
+<script type="text/javascript" src="//cdn.bootcss.com/animejs/2.2.0/anime.min.js"></script> 
+<script type="text/javascript" src="/js/fireworks.js"></script>
+<meta name="generator" content="Hexo 4.2.0"></head>
+<body>
+    <div class="wrapper">
+        <header>
+    <nav class="navbar">
+        <div class="container">
+            <div class="navbar-header header-logo"><a href="/">LzMiracle&#39;s Blog</a></div>
+            <div class="menu navbar-right">
+                
+                    <a class="menu-item" href="/archives">文章</a>
+                
+                <input id="switch_default" type="checkbox" class="switch_default">
+                <label for="switch_default" class="toggleBtn"></label>
+            </div>
+
+        </div>
+    </nav>
+
+    
+    <nav class="navbar-mobile" id="nav-mobile">
+        <div class="container">
+            <div class="navbar-header">
+                <div>
+                    <a href="/">LzMiracle&#39;s Blog</a><a id="mobile-toggle-theme">·&nbsp;Light</a>
+                </div>
+                <div class="menu-toggle" onclick="mobileBtn()">&#9776; Menu</div>
+            </div>
+            <div class="menu" id="mobile-menu">
+                
+                    <a class="menu-item" href="/archives">文章</a>
+                
+            </div>
+        </div>
+    </nav>
+
+</header>
+<script>
+    var mobileBtn = function f() {
+        var toggleMenu = document.getElementsByClassName("menu-toggle")[0];
+        var mobileMenu = document.getElementById("mobile-menu");
+        if(toggleMenu.classList.contains("active")){
+           toggleMenu.classList.remove("active")
+            mobileMenu.classList.remove("active")
+        }else{
+            toggleMenu.classList.add("active")
+            mobileMenu.classList.add("active")
+        }
+    }
+</script>
+        <div class="main">
+            <div class="container">
+    
+    
+        <div class="post-toc">
+    <div class="tocbot-list">
+    </div>
+    <div class="tocbot-list-menu">
+        <a class="tocbot-toc-expand" onclick="expand_toc()">Expand all</a>
+        <a onclick="go_top()">Back to top</a>
+        <a onclick="go_bottom()">Go to bottom</a>
+    </div>
+</div>
+
+<script>
+    document.ready(
+        function () {
+            tocbot.init({
+                tocSelector: '.tocbot-list',
+                contentSelector: '.post-content',
+                headingSelector: 'h1, h2, h3, h4, h5',
+                collapseDepth: 1,
+                orderedList: false,
+                scrollSmooth: true,
+            })
+        }
+    )
+
+    function expand_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 6,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "collapse_toc()");
+        b.innerHTML = "Collapse all"
+    }
+
+    function collapse_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 1,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "expand_toc()");
+        b.innerHTML = "Expand all"
+    }
+
+    function go_top() {
+        window.scrollTo(0, 0);
+    }
+
+    function go_bottom() {
+        window.scrollTo(0, document.body.scrollHeight);
+    }
+
+</script>
+    
+
+    
+    <article class="post-wrap">
+        <header class="post-header">
+            <h1 class="post-title">vue-面试</h1>
+            
+                <div class="post-meta">
+                    
+                        Author: <a itemprop="author" rel="author" href="/">LzMiracle</a>
+                    
+
+                    
+                        <span class="post-time">
+                        Date: <a href="#">十一月 12, 2020&nbsp;&nbsp;9:56:49</a>
+                        </span>
+                    
+                    
+                </div>
+            
+        </header>
+
+        <div class="post-content">
+            <h1 id="Vue"><a href="#Vue" class="headerlink" title="Vue"></a>Vue</h1><p>什么是mvvm</p>
+<p>MVVM最早由微软提出来，它借鉴了桌面应用程序的MVC思想，在前端页面中，把Model用纯JavaScript对象表示，View负责显示，两者做到了最大限度的分离<br>把Model和View关联起来的就是ViewModel。<br><br>ViewModel负责把Model的数据同步到View显示出来，还负责把View的修改同步回Model<br><br>View 和 Model 之间的同步工作完全是自动的，无需人为干涉（由viewModel完成，在这里指VUE）<br><br>因此开发者只需关注业务逻辑，不需要手动操作DOM, 不需要关注数据状态的同步问题，复杂的数据状态维护完全由 MVVM 来统一管理<br></p>
+<h4 id="ViewModel如何编写？"><a href="#ViewModel如何编写？" class="headerlink" title="ViewModel如何编写？"></a>ViewModel如何编写？</h4><p>需要用JavaScript编写一个通用的ViewModel，这样，就可以复用整个MVVM模型了</p>
+<p>一个MVVM框架和jQuery操作DOM相比有什么区别？<br>我们先看用jQuery实现的修改两个DOM节点的例子：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&lt;!-- HTML --&gt;</span><br><span class="line">&lt;p&gt;Hello, &lt;span id&#x3D;&quot;name&quot;&gt;Bart&lt;&#x2F;span&gt;!&lt;&#x2F;p&gt;</span><br><span class="line">&lt;p&gt;You are &lt;span id&#x3D;&quot;age&quot;&gt;12&lt;&#x2F;span&gt;.&lt;&#x2F;p&gt;</span><br><span class="line"></span><br><span class="line">Hello, Bart!</span><br><span class="line"></span><br><span class="line">You are 12.</span><br></pre></td></tr></table></figure>
+<p>用jQuery修改name和age节点的内容：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">var name &#x3D; &#39;Homer&#39;;</span><br><span class="line">var age &#x3D; 51;</span><br><span class="line"></span><br><span class="line">$(&#39;#name&#39;).text(name);</span><br><span class="line">$(&#39;#age&#39;).text(age);</span><br></pre></td></tr></table></figure>
+
+<p>如果我们使用MVVM框架来实现同样的功能，我们首先并不关心DOM的结构，而是关心数据如何存储。最简单的数据存储方式是使用JavaScript对象：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">var person &#x3D; &#123;</span><br><span class="line">    name: &#39;Bart&#39;,</span><br><span class="line">    age: 12</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>我们把变量person看作Model，把HTML某些DOM节点看作View，并假定它们之间被关联起来了。</p>
+<p>要把显示的name从Bart改为Homer，把显示的age从12改为51，我们并不操作DOM，而是直接修改JavaScript对象：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">person.name &#x3D; &#39;Homer&#39;;</span><br><span class="line">person.age &#x3D; 51;</span><br></pre></td></tr></table></figure>
+
+<p>执行上面的代码，我们惊讶地发现，改变JavaScript对象的状态，会导致DOM结构作出对应的变化！这让我们的关注点从如何操作DOM变成了如何更新JavaScript对象的状态，而操作JavaScript对象比DOM简单多了！</p>
+<p>这就是MVVM的设计思想：关注Model的变化，让MVVM框架去自动更新DOM的状态，从而把开发者从操作DOM的繁琐步骤中解脱出来！<br>下图可以很好的解释view viewModel model之间的关系<br><img src="https://github.com/woai3c/mini-vue/blob/master/imgs/mvvm.jpg" alt="mvvm"></p>
+<h4 id="回到顶部"><a href="#回到顶部" class="headerlink" title="回到顶部"></a><a href="#vue">回到顶部</a></h4><h2 id="Vue的优点是什么"><a href="#Vue的优点是什么" class="headerlink" title="Vue的优点是什么"></a>Vue的优点是什么</h2><p>mvvm的优点即是vue的优点，在这里再总结一下：<br><br>数据和视频之间的同步工作完全是自动的，无需人为干涉，所以开发者只需关注业务逻辑，不需要手动操作DOM, 不需要关注数据状态的同步问题，<br>复杂的数据状态维护完全由 MVVM 来统一管理，节省了很多精力。</p>
+<h4 id="回到顶部-1"><a href="#回到顶部-1" class="headerlink" title="回到顶部"></a><a href="#vue">回到顶部</a></h4><h2 id="对于生命周期的理解"><a href="#对于生命周期的理解" class="headerlink" title="对于生命周期的理解"></a>对于生命周期的理解</h2><p>创建一个Vue实例，是一个漫长的过程，要经历初始化，数据合并，模板解析，数据渲染等等一系列过程。<br>所以，为了能实现在这个过程里面插入自己想要提前做的事情，就有了生命周期钩子函数。</p>
+<h4 id="举个例子："><a href="#举个例子：" class="headerlink" title="举个例子："></a>举个例子：</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">一辆公交车，从出发点A站到终点站B，中间有很多站点，公交车每到一个站点，就得停下来，</span><br><span class="line">等待客人上车，然后再驶往下一个站点，一直到终点站为止。</span><br><span class="line">A和B之间的站点，就像是这个路程的生命周期。每一个站点都是一个不同的生命周期（站点名不同），</span><br><span class="line">只要到了站点，就得执行该站点对应的生命周期函数，</span><br><span class="line">只不过每个站点的生命周期函数都是一样的（等待客人上车）。</span><br></pre></td></tr></table></figure>
+<p>Vue中的生命周期也是一样，对应了Vue实例从创建到结束之间的每一个过程。<br>例如，Vue的<code>beforeCreate</code>周期，指的就是Vue在实例初始化之后，数据观测 (data observer) 和 event/watcher 事件配置之前被调用。</p>
+<p>至于Vue具体的生命周期函数有哪些，请看官网<a href="https://cn.vuejs.org/v2/api/#%E9%80%89%E9%A1%B9-%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F%E9%92%A9%E5%AD%90" target="_blank" rel="noopener">API文档</a></p>
+<h4 id="回到顶部-2"><a href="#回到顶部-2" class="headerlink" title="回到顶部"></a><a href="#vue">回到顶部</a></h4><h2 id="组件传值"><a href="#组件传值" class="headerlink" title="组件传值"></a>组件传值</h2><ul>
+<li>父组件通过prop向子组件传值</li>
+<li>子组件通过事件向父组件传值</li>
+<li>子组件与子组件之间不能直接传值，需要通过父组件来做间接传值，在这种情况下推荐使用vuex</li>
+</ul>
+<p>具体例子请看<a href="https://cn.vuejs.org/v2/guide/components.html#%E9%80%9A%E8%BF%87-Prop-%E5%90%91%E5%AD%90%E7%BB%84%E4%BB%B6%E4%BC%A0%E9%80%92%E6%95%B0%E6%8D%AE" target="_blank" rel="noopener">官方文档</a></p>
+<h4 id="回到顶部-3"><a href="#回到顶部-3" class="headerlink" title="回到顶部"></a><a href="#vue">回到顶部</a></h4><h2 id="vue数据绑定原理"><a href="#vue数据绑定原理" class="headerlink" title="vue数据绑定原理"></a>vue数据绑定原理</h2><p>Vue的数据双向绑定都是依据Object.defineProperty()这一方法来做的<br><br>Object.defineProperty到底有什么作用呢？<br><a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Object/defineProperty" target="_blank" rel="noopener">MDN</a></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">Object.defineProperty(obj, prop, descriptor)</span><br><span class="line"></span><br><span class="line">obj</span><br><span class="line">要在其上定义属性的对象。</span><br><span class="line"></span><br><span class="line">prop</span><br><span class="line">要定义或修改的属性的名称。</span><br><span class="line"></span><br><span class="line">descriptor</span><br><span class="line">将被定义或修改的属性描述符。</span><br></pre></td></tr></table></figure>
+<p>简单来说 这个方法可以定义一个对象某个属性的描述符</p>
+<p>我们需要用到的就是描述符当中的getter和setter</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">const obj &#x3D; &#123;a:1&#125;</span><br><span class="line">obj.a &#x2F;&#x2F; 1</span><br><span class="line"></span><br><span class="line">obj.a &#x3D; 2</span><br></pre></td></tr></table></figure>
+<p>像上面代码中的两个操作 读取和赋值 就是在访问obj.a的getter和setter<br><br>当我们输入obj.a时 就是在访问obj对象a属性的getter 当输入obj.a = 2 时就是在访问obj对象a属性的setter</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">Object.defineProperty(obj, &#39;a&#39;, &#123;</span><br><span class="line">  get : function()&#123;</span><br><span class="line">    return val</span><br><span class="line">  &#125;,</span><br><span class="line">  set : function(newValue)&#123;</span><br><span class="line">    val &#x3D; newValue</span><br><span class="line">  &#125;,</span><br><span class="line">  enumerable : true,</span><br><span class="line">  configurable : true</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<p>getter和setter都是一个函数 我们还可以这样做 例如</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">get: function() &#123;</span><br><span class="line">  &#x2F;&#x2F; 每次访问obj.a时都会执行这段代码</span><br><span class="line">  console.log(&#39;hello, 你在读取a的值&#39;)</span><br><span class="line">  return val</span><br><span class="line">&#125;</span><br><span class="line">set: function(newValue) &#123;</span><br><span class="line">  val &#x3D; newValue</span><br><span class="line">  &#x2F;&#x2F; 每次给obj.a赋值时都会执行这段代码</span><br><span class="line">  console.log(&#39;你设置了a的值&#39;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>Vue的双向数据绑定就是根据上面的原理来实现的<br>只要在读取值时收集观察者 在赋值时触发观察者更新函数 就可以实现数据变更 从而实现DOM重新渲染</p>
+<p>说到这可能还不是很明白 不要急 慢慢来 先看一下这段代码 复制放到HTML文件里自己运行一下<br>然后打开网页 在控制台里输入data.user.name看看 会有惊喜 </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">    &lt;meta charset&#x3D;&quot;utf-8&quot;&gt;</span><br><span class="line">    &lt;title&gt;动态数据绑定（一）&lt;&#x2F;title&gt;</span><br><span class="line">&lt;&#x2F;head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line"> &lt;script&gt;</span><br><span class="line">    var data &#x3D; &#123;</span><br><span class="line">        user: &#123;</span><br><span class="line">            name: &#39;xiaoming&#39;,</span><br><span class="line">            age: 18,</span><br><span class="line">            occupation: &#39;frontend&#39;</span><br><span class="line">        &#125;,</span><br><span class="line">        address: &#123;</span><br><span class="line">            city: &#39;shaoguan&#39;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;; </span><br><span class="line">    function Observer(data) &#123;</span><br><span class="line">        this.data &#x3D; data;</span><br><span class="line">        this.walk(data);</span><br><span class="line">    &#125;</span><br><span class="line">    Observer.prototype &#x3D; &#123;</span><br><span class="line">        walk: function(obj) &#123;</span><br><span class="line">            var value,</span><br><span class="line">                key;</span><br><span class="line">            for (key in obj) &#123;</span><br><span class="line">                if (obj.hasOwnProperty(key)) &#123;</span><br><span class="line">                    value &#x3D; obj[key];</span><br><span class="line">                    if (typeof value &#x3D;&#x3D;&#x3D; &#39;object&#39;) &#123;</span><br><span class="line">                        new Observer(value);</span><br><span class="line">                    &#125;</span><br><span class="line">                    this.convert(key, value); </span><br><span class="line">                &#125;   </span><br><span class="line">            &#125;</span><br><span class="line">        &#125;,</span><br><span class="line">        convert: function(key, value) &#123;</span><br><span class="line">            Object.defineProperty(this.data, key, &#123;</span><br><span class="line">                get : function()&#123; </span><br><span class="line">                    console.log(&quot;你访问了&quot; + key);</span><br><span class="line">                    return value; </span><br><span class="line">                &#125;,</span><br><span class="line">                set : function(newValue)&#123; </span><br><span class="line">                    value &#x3D; newValue; </span><br><span class="line">                    console.log(&#39;你设置了&#39; + key + &#39;&#x3D;&#39; + value);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;  </span><br><span class="line">    var example &#x3D; new Observer(data);</span><br><span class="line"> &lt;&#x2F;script&gt;   </span><br><span class="line">&lt;&#x2F;body&gt;</span><br><span class="line">&lt;&#x2F;html&gt;</span><br></pre></td></tr></table></figure>
+
+<h4 id="回到顶部-4"><a href="#回到顶部-4" class="headerlink" title="回到顶部"></a><a href="#vue">回到顶部</a></h4><h2 id="vue-router原理"><a href="#vue-router原理" class="headerlink" title="vue-router原理"></a>vue-router原理</h2><p>说简单点，vue-router的原理就是通过对URL地址变化的监听，继而对不同的组件进行渲染。<br><br>每当URL地址改变时，就对相应的组件进行渲染。原理是很简单，实现方式可能有点复杂，主要有hash模式和history模式。<br></p>
+<p>#hash不会触发浏览器页面请求，不需要用服务器配合</p>
+<p>history是使用history.pushstate(),修改url不会触发浏览器页面请求，需要服务器配合</p>
+<p>如果想了解得详细点，建议百度或者阅读源码。</p>
+<h4 id="回到顶部-5"><a href="#回到顶部-5" class="headerlink" title="回到顶部"></a><a href="#vue">回到顶部</a></h4><h2 id="vuex原理"><a href="#vuex原理" class="headerlink" title="vuex原理"></a>vuex原理</h2><p>vuex的原理其实非常简单，它为什么能实现所有的组件共享同一份数据？<br><br>因为vuex生成了一个store实例，并且把这个实例挂在了所有的组件上，所有的组件引用的都是同一个store实例。<br><br>store实例上有数据，有方法，方法改变的都是store实例上的数据。由于其他组件引用的是同样的实例，所以一个组件改变了store上的数据，<br>导致另一个组件上的数据也会改变，就像是一个对象的引用。<br><br>如果对vuex的实现有兴趣，可以看看我自己造的一个vue轮子对应的<a href="https://github.com/woai3c/mini-vuex/blob/master/mini-vuex.js" target="_blank" rel="noopener">vuex插件</a>。它实现了除vuex模块外的所有功能。</p>
+<h4 id="回到顶部-6"><a href="#回到顶部-6" class="headerlink" title="回到顶部"></a><a href="#vue">回到顶部</a></h4><h2 id="v-if和v-show的区别"><a href="#v-if和v-show的区别" class="headerlink" title="v-if和v-show的区别"></a>v-if和v-show的区别</h2><p><code>v-if</code> 是“真正”的条件渲染，因为它会确保在切换过程中条件块内的事件监听器和子组件适当地被销毁和重建。</p>
+<p><code>v-if</code> 也是惰性的：如果在初始渲染时条件为假，则什么也不做——直到条件第一次变为真时，才会开始渲染条件块。</p>
+<p>相比之下，<code>v-show</code> 就简单得多——不管初始条件是什么，元素总是会被渲染，并且只是简单地基于 CSS 进行切换。</p>
+<p>一般来说，<code>v-if</code> 有更高的切换开销，而 <code>v-show</code> 有更高的初始渲染开销。因此，如果需要非常频繁地切换，则使用 <code>v-show</code> 较好；如果在运行时条件很少改变，则使用<code>v-if</code> 较好。</p>
+<p><a href="https://cn.vuejs.org/v2/guide/conditional.html#v-if-vs-v-show" target="_blank" rel="noopener">https://cn.vuejs.org/v2/guide/conditional.html#v-if-vs-v-show</a></p>
+<h4 id="回到顶部-7"><a href="#回到顶部-7" class="headerlink" title="回到顶部"></a><a href="#vue">回到顶部</a></h4><h2 id="vue怎么实现页面的权限控制"><a href="#vue怎么实现页面的权限控制" class="headerlink" title="vue怎么实现页面的权限控制"></a>vue怎么实现页面的权限控制</h2><p>利用 <code>vue-router</code> 的 <code>beforeEach</code> 事件，可以在跳转页面前判断用户的权限（利用 cookie 或 token，sessionid），是否能够进入此页面，如果不能则提示错误或重定向到其他页面，在后台管理系统中这种场景经常能遇到。</p>
+<h4 id="回到顶部-8"><a href="#回到顶部-8" class="headerlink" title="回到顶部"></a><a href="#vue">回到顶部</a></h4><h2 id="keep-alive有什么作用"><a href="#keep-alive有什么作用" class="headerlink" title="keep-alive有什么作用"></a>keep-alive有什么作用</h2><p>在 <code>Vue</code> 中，每次切换组件时，都会重新渲染。如果有多个组件切换，又想让它们保持原来的状态，避免重新渲染，这个时候就可以使用 <code>keep-alive</code>。<br><code>keep-alive</code> 可以使被包含的组件保留状态，或避免重新渲染。</p>
+<h4 id="回到顶部-9"><a href="#回到顶部-9" class="headerlink" title="回到顶部"></a><a href="#vue">回到顶部</a></h4><h2 id="计算属性有什么作用"><a href="#计算属性有什么作用" class="headerlink" title="计算属性有什么作用"></a>计算属性有什么作用</h2><p>先来看一下计算属性的定义：<br><br>当其依赖的属性的值发生变化的时，计算属性会重新计算。反之则使用缓存中的属性值。<br><br>计算属性和vue中的其它数据一样，都是响应式的，只不过它必须依赖某一个数据实现，并且只有它依赖的数据的值改变了，它才会更新。</p>
+<h4 id="回到顶部-10"><a href="#回到顶部-10" class="headerlink" title="回到顶部"></a><a href="#vue">回到顶部</a></h4><h2 id="route和-router的区别"><a href="#route和-router的区别" class="headerlink" title="$route和$router的区别"></a>$route和$router的区别</h2><p><code>$route</code> 是路由信息对象，包括<code>path</code>，<code>params</code>，<code>hash</code>，<code>query</code>，<code>fullPath</code>，<code>matched</code>，<code>name</code> 等路由信息参数。</p>
+<p>而 <code>$router</code> 是路由实例对象，包括了路由的跳转方法，钩子函数等</p>
+<h4 id="回到顶部-11"><a href="#回到顶部-11" class="headerlink" title="回到顶部"></a><a href="#vue">回到顶部</a></h4><h2 id="watch的作用是什么"><a href="#watch的作用是什么" class="headerlink" title="watch的作用是什么"></a>watch的作用是什么</h2><p><code>watch</code> 主要作用是监听某个数据值的变化。和计算属性相比除了没有缓存，作用是一样的。</p>
+<p>借助 <code>watch</code> 还可以做一些特别的事情，例如监听页面路由，当页面跳转时，我们可以做相应的权限控制，拒绝没有权限的用户访问页面。</p>
+<h4 id="回到顶部-12"><a href="#回到顶部-12" class="headerlink" title="回到顶部"></a><a href="#vue">回到顶部</a></h4><h2 id="vue-loader是什么？使用它的用途有哪些？"><a href="#vue-loader是什么？使用它的用途有哪些？" class="headerlink" title="vue-loader是什么？使用它的用途有哪些？"></a>vue-loader是什么？使用它的用途有哪些？</h2><p>vue-loader 是解析 .vue 文件的一个加载器，将 template/js/style 转换成 js 模块。</p>
+<p>用途：js 可以写 es6、style 样式可以 scss 或 less；template 可以加 jade 等。</p>
+<h4 id="回到顶部-13"><a href="#回到顶部-13" class="headerlink" title="回到顶部"></a><a href="#vue">回到顶部</a></h4><h2 id="假设定义了一个数组a-1-2-3-，相应的，页面上显示的值为1-2-3，现设a-0-5，页面上的值会变成5-2-3吗？为什么？"><a href="#假设定义了一个数组a-1-2-3-，相应的，页面上显示的值为1-2-3，现设a-0-5，页面上的值会变成5-2-3吗？为什么？" class="headerlink" title="假设定义了一个数组a=[1,2,3]，相应的，页面上显示的值为1,2,3，现设a[0]=5，页面上的值会变成5,2,3吗？为什么？"></a>假设定义了一个数组a=[1,2,3]，相应的，页面上显示的值为1,2,3，现设a[0]=5，页面上的值会变成5,2,3吗？为什么？</h2><p>不会</p>
+<p>因为 Vue 是使用 <code>Object.defineProperty</code> 来监听数值变化的，而直接修改数组的值的这种操作无法监听。</p>
+<p>例如：<code>vm.items[indexOfItem] = newValue</code> 这种操作是无法监听的。</p>
+<p>如果需要直接修改数组元素的值，可以使用 <code>Vue.set</code></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Vue.set(vm.items, indexOfItem, newValue)</span><br></pre></td></tr></table></figure>
+
+<p><a href="https://cn.vuejs.org/v2/guide/list.html#%E6%95%B0%E7%BB%84%E6%9B%B4%E6%96%B0%E6%A3%80%E6%B5%8B" target="_blank" rel="noopener">数组更新检测</a></p>
+<h4 id="回到顶部-14"><a href="#回到顶部-14" class="headerlink" title="回到顶部"></a><a href="#vue">回到顶部</a></h4>
+        </div>
+
+        
+            <section class="post-copyright">
+                
+                    <p class="copyright-item">
+                        <span>Author:</span>
+                        <span>LzMiracle</span>
+                    </p>
+                
+                
+                    <p class="copyright-item">
+                        <span>Permalink:</span>
+                        <span><a href="http://yoursite.com/2020/11/12/vue-%E9%9D%A2%E8%AF%95/">http://yoursite.com/2020/11/12/vue-%E9%9D%A2%E8%AF%95/</a></span>
+                    </p>
+                
+                
+                    <p class="copyright-item">
+                        <span>License:</span>
+                        <span>Copyright (c) 2019 <a href="http://creativecommons.org/licenses/by-nc/4.0/" target="_blank" rel="noopener">CC-BY-NC-4.0</a> LICENSE</span>
+                    </p>
+                
+                
+                     <p class="copyright-item">
+                         <span>Slogan:</span>
+                         <span>Do you believe in <strong>DESTINY<strong>?</span>
+                     </p>
+                
+
+            </section>
+        
+        <section class="post-tags">
+            <div>
+                <span>Tag(s):</span>
+                <span class="tag">
+                    
+                </span>
+            </div>
+            <div>
+                <a href="javascript:window.history.back();">back</a>
+                <span>· </span>
+                <a href="/">home</a>
+            </div>
+        </section>
+        <section class="post-nav">
+            
+                <a class="prev" rel="prev" href="/2020/11/12/JavaSciprt-%E9%9D%A2%E8%AF%95/">JavaSciprt-面试</a>
+            
+            
+            <a class="next" rel="next" href="/2020/11/12/%E9%9D%A2%E8%AF%95%E9%A2%98%E7%9B%AE%E6%80%BB%E7%BB%93/">面试题目总结</a>
+            
+        </section>
+
+
+    </article>
+</div>
+
+        </div>
+        <footer id="footer" class="footer">
+    <div class="copyright">
+        <span style="font-size: 12px">© LzMiracle  | 备案号<a href="https://beian.miit.gov.cn" target="_blank" style="font-size: 12px;color:#bbb;">粤ICP备20007557号</a></span>
+    </div>
+</footer>
+
+    </div>
+    <script type="text/javascript" src="//cdn.bootcss.com/canvas-nest.js/1.0.0/canvas-nest.min.js"></script>
+{% endif %}
+</body>
+</html>
